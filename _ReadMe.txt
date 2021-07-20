@@ -28,6 +28,12 @@ Once a collection of watermarks of the same type have been marked by watermarkPo
 
 All of the above program modules are released as open source software and are available directly for download. If you are a programmer and would like to consider contributing to this effort, we welcome help, as both source code and executables can be found at the GitHub site.
 
+If you are having trouble getting things working, contact us at: 
+
+sethares@wisc.edu
+
+and with luck, we'll be able to help out. 
+
 Related Publications
 
 Johnson, Jr., C. Richard, William A. Sethares, and Margaret Holben Ellis. “Paper Moldmate Verification Protocol.” January 26, 2021. https://people.ece.cornell.edu/johnson/MoldmateVerificationProtocol-1-26-21.pdf.
