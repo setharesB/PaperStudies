@@ -1,0 +1,1814 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1064,         20]
+NotebookDataLength[     82350,       1793]
+NotebookOptionsPosition[     82643,       1786]
+NotebookOutlinePosition[     83040,       1802]
+CellTagsIndexPosition[     82997,       1799]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Animate Two Watermark Images", "Section",
+ CellChangeTimes->{{3.8063225483174057`*^9, 3.806322563937273*^9}, {
+  3.806341042509506*^9, 3.806341062472596*^9}, {3.806418546882703*^9, 
+  3.806418547913497*^9}, {3.809000205616807*^9, 3.8090002082459173`*^9}, {
+  3.8131379923034286`*^9, 3.813138018956736*^9}, {3.8148104506812572`*^9, 
+  3.814810482200563*^9}},ExpressionUUID->"dc53fd55-0f5b-4946-b9cc-\
+f5d37d9663aa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"newDirA", "\[Equal]", "True"}], ",", 
+      RowBox[{
+       RowBox[{"thisChoice", "=", 
+        RowBox[{"SystemDialogInput", "[", 
+         RowBox[{"\"\<Directory\>\"", ",", 
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+          RowBox[{
+          "WindowTitle", "\[Rule]", 
+           "\"\<Please locate a folder of watermark Points\>\""}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"UnsameQ", "[", 
+          RowBox[{"thisChoice", ",", "$Canceled"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"thisDirA", "=", "thisChoice"}], ";", 
+          RowBox[{"dirA", "=", "thisDirA"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"txtFilesTest", "=", 
+           RowBox[{"FileNames", "[", 
+            RowBox[{"\"\<*.txt\>\"", ",", "dirA"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", "txtFilesTest", "]"}], ">", "0"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"txts", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringDrop", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"-", "29"}], ",", 
+                    RowBox[{"-", "24"}]}], "}"}]}], "]"}], "&"}], "/@", 
+               "txtFilesTest"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"correspondingJPGs", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringInsert", "[", 
+                 RowBox[{"#", ",", "\"\<SnapWMImg\>\"", ",", 
+                  RowBox[{"-", "24"}]}], "]"}], "&"}], "/@", "txts"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"imageNamesCalc", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"StringDrop", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"-", "4"}]}], "]"}], "&"}], "/@", 
+                    "correspondingJPGs"}], ")"}], "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<.jpg\>\""}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "correspondingJPGs", "]"}]}], 
+                 "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"imageNamesA", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileExistsQ", "[", 
+                    RowBox[{"imageNamesCalc", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "==", "True"}], 
+                  ",", 
+                  RowBox[{"imageNamesCalc", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "Nothing"}], "]"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "imageNamesCalc", "]"}]}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"txtFilesA", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileExistsQ", "[", 
+                    RowBox[{"imageNamesCalc", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "==", "True"}], 
+                  ",", 
+                  RowBox[{"txtFilesTest", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "Nothing"}], "]"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "imageNamesCalc", "]"}]}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"imageNamesDispA", "=", 
+              RowBox[{"FileBaseName", "/@", "imageNamesA"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"waterNameA", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringDrop", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"-", "28"}]}], "]"}], "&"}], "/@", 
+               "imageNamesDispA"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"thisImgAOld", "=", "0"}], ";", 
+             RowBox[{"thisImgA", "=", "1"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"imageNamesB", "==", "\"\<\>\""}], ",", 
+            RowBox[{
+             RowBox[{"newDirB", "=", "True"}], ";"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"newDirA", "=", "False"}], ";", 
+          RowBox[{"startup", "=", "False"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"newDirB", "\[Equal]", "True"}], ",", 
+      RowBox[{
+       RowBox[{"thisChoice", "=", 
+        RowBox[{"SystemDialogInput", "[", 
+         RowBox[{"\"\<Directory\>\"", ",", 
+          RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+          RowBox[{
+          "WindowTitle", "\[Rule]", 
+           "\"\<Please locate a folder of watermark Points\>\""}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"UnsameQ", "[", 
+          RowBox[{"thisChoice", ",", "$Canceled"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"thisDirB", "=", "thisChoice"}], ";", 
+          RowBox[{"dirB", "=", "thisDirB"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"txtFilesTest", "=", 
+           RowBox[{"FileNames", "[", 
+            RowBox[{"\"\<*.txt\>\"", ",", "dirB"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", "txtFilesTest", "]"}], ">", "0"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"txts", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringDrop", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"-", "29"}], ",", 
+                    RowBox[{"-", "24"}]}], "}"}]}], "]"}], "&"}], "/@", 
+               "txtFilesTest"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"correspondingJPGs", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringInsert", "[", 
+                 RowBox[{"#", ",", "\"\<SnapWMImg\>\"", ",", 
+                  RowBox[{"-", "24"}]}], "]"}], "&"}], "/@", "txts"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"imageNamesCalc", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"StringDrop", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"-", "4"}]}], "]"}], "&"}], "/@", 
+                    "correspondingJPGs"}], ")"}], "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "<>", "\"\<.jpg\>\""}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "correspondingJPGs", "]"}]}], 
+                 "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"imageNamesB", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileExistsQ", "[", 
+                    RowBox[{"imageNamesCalc", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "==", "True"}], 
+                  ",", 
+                  RowBox[{"imageNamesCalc", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "Nothing"}], "]"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "imageNamesCalc", "]"}]}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"txtFilesB", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"FileExistsQ", "[", 
+                    RowBox[{"imageNamesCalc", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}], "==", "True"}], 
+                  ",", 
+                  RowBox[{"txtFilesTest", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "Nothing"}], "]"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", 
+                  RowBox[{"Length", "[", "imageNamesCalc", "]"}]}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"imageNamesDispB", "=", 
+              RowBox[{"FileBaseName", "/@", "imageNamesB"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"waterNameB", "=", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringDrop", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"-", "28"}]}], "]"}], "&"}], "/@", 
+               "imageNamesDispB"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"thisImgBOld", "=", "0"}], ";", 
+             RowBox[{"thisImgB", "=", "1"}], ";"}]}], "\[IndentingNewLine]", 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"imageNamesA", "==", "\"\<\>\""}], ",", 
+            RowBox[{
+             RowBox[{"newDirA", "=", "True"}], ";"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"newDirB", "=", "False"}], ";", 
+          RowBox[{"startup", "=", "False"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"thisImgA", "\[NotEqual]", "thisImgAOld"}], ")"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"textA", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"txtFilesA", "[", 
+          RowBox[{"[", "thisImgA", "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"expAraw", "=", 
+        RowBox[{"ToExpression", "[", 
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"textA", ",", "\"\<\\n\>\""}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"imgAraw", "=", 
+        RowBox[{"ColorConvert", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", 
+           RowBox[{"imageNamesA", "[", 
+            RowBox[{"[", "thisImgA", "]"}], "]"}], "]"}], ",", 
+          "\"\<Grayscale\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"inDim", " ", "=", " ", 
+        RowBox[{"Max", "[", 
+         RowBox[{"ImageDimensions", "[", "imgAraw", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Max", "[", "inDim", "]"}], ">", "1000"}], ",", 
+         RowBox[{"rescaleF", "=", 
+          RowBox[{"1000.0", "/", "inDim"}]}], ",", 
+         RowBox[{
+          RowBox[{"rescaleF", "=", "1"}], ";"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"imgA", "=", 
+        RowBox[{"ImageResize", "[", 
+         RowBox[{"imgAraw", ",", 
+          RowBox[{"Scaled", "[", "rescaleF", "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"imgAraw", " ", "=", " ", "imgA"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"expA", "=", 
+        RowBox[{"rescaleF", " ", "expAraw"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"expAraw", "=", "expA"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"mostRecent", "=", "\"\<newFile\>\""}], ";", 
+       RowBox[{"thisImgAOld", "=", "thisImgA"}]}]}], "]"}], ";", "\n", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"thisImgB", "\[NotEqual]", "thisImgBOld"}], ")"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"textB", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"txtFilesB", "[", 
+          RowBox[{"[", "thisImgB", "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"expBraw", "=", 
+        RowBox[{"ToExpression", "[", 
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"textB", ",", "\"\<\\n\>\""}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"imgBraw", "=", 
+        RowBox[{"ColorConvert", "[", 
+         RowBox[{
+          RowBox[{"Import", "[", 
+           RowBox[{"imageNamesB", "[", 
+            RowBox[{"[", "thisImgB", "]"}], "]"}], "]"}], ",", 
+          "\"\<Grayscale\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"inDim", " ", "=", " ", 
+        RowBox[{"Max", "[", 
+         RowBox[{"ImageDimensions", "[", "imgBraw", "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Max", "[", "inDim", "]"}], ">", "1000"}], ",", 
+         RowBox[{"rescaleF", "=", 
+          RowBox[{"1000.0", "/", "inDim"}]}], ",", 
+         RowBox[{
+          RowBox[{"rescaleF", "=", "1"}], ";"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"imgB", "=", 
+        RowBox[{"ImageResize", "[", 
+         RowBox[{"imgBraw", ",", 
+          RowBox[{"Scaled", "[", "rescaleF", "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"imgBraw", " ", "=", " ", "imgB"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"expB", "=", 
+        RowBox[{"rescaleF", " ", "expBraw"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"expBraw", "=", "expB"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"mostRecent", "=", "\"\<newFile\>\""}], ";", 
+       RowBox[{"thisImgBOld", "=", "thisImgB"}]}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"mostRecent", "\[Equal]", "\"\<making\>\""}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"imgAMod", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"invertA", "==", "True"}], ",", 
+          RowBox[{"ColorNegate", "[", "imgA", "]"}], ",", "imgA"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"imgBMod", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"invertB", "==", "True"}], ",", 
+          RowBox[{"ColorNegate", "[", "imgB", "]"}], ",", "imgB"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"a2b", "==", "1"}], ",", 
+         RowBox[{"making", "[", 
+          RowBox[{
+          "imgAMod", ",", "imgBMod", ",", "selectedA", ",", "selectedB", ",", 
+           
+           RowBox[{"waterNameA", "[", 
+            RowBox[{"[", "thisImgA", "]"}], "]"}], ",", 
+           RowBox[{"waterNameB", "[", 
+            RowBox[{"[", "thisImgB", "]"}], "]"}], ",", "dots"}], "]"}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"a2b", "==", "0"}], ",", 
+         RowBox[{"making", "[", 
+          RowBox[{
+          "imgBMod", ",", "imgAMod", ",", "selectedB", ",", "selectedA", ",", 
+           
+           RowBox[{"waterNameB", "[", 
+            RowBox[{"[", "thisImgB", "]"}], "]"}], ",", 
+           RowBox[{"waterNameA", "[", 
+            RowBox[{"[", "thisImgA", "]"}], "]"}], ",", "dots"}], "]"}]}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "expA", "]"}], "\[Equal]", 
+        RowBox[{"Length", "[", "expB", "]"}]}], "&&", 
+       RowBox[{
+        RowBox[{"Length", "[", "expA", "]"}], ">", "0"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ind", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"Position", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"Total", "/@", "expA"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"Total", "/@", "expB"}], ")"}]}], ",", 
+           RowBox[{"_", "?", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"0.01", "<", "#"}], ")"}], "&"}], ")"}]}]}], "]"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"selectedA", "=", 
+        RowBox[{"expA", "[", 
+         RowBox[{"[", "ind", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"selectedB", "=", 
+        RowBox[{"expB", "[", 
+         RowBox[{"[", "ind", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"imgAMod", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"invertA", "==", "True"}], ",", 
+          RowBox[{"ColorNegate", "[", "imgA", "]"}], ",", "imgA"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"imgBMod", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"invertB", "==", "True"}], ",", 
+          RowBox[{"ColorNegate", "[", "imgB", "]"}], ",", "imgB"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"images", "=", 
+        RowBox[{"{", 
+         RowBox[{"imgAMod", ",", "imgBMod"}], "}"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"matches", "=", 
+        RowBox[{"{", 
+         RowBox[{"selectedA", ",", "selectedB"}], "}"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"displayMatches", "=", 
+        RowBox[{"{", 
+         RowBox[{"expA", ",", "expB"}], "}"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"imAll", "=", 
+        RowBox[{"Image", "/@", 
+         RowBox[{"ImageData", "/@", "images"}]}]}], ";", "\n", 
+       RowBox[{"dispFile", "=", 
+        RowBox[{"GraphicsRow", "[", 
+         RowBox[{"MapThread", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Show", "[", 
+             RowBox[{"#1", ",", 
+              RowBox[{"Graphics", "[", 
+               RowBox[{"{", 
+                RowBox[{"Yellow", ",", 
+                 RowBox[{"MapIndexed", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Inset", "[", 
+                    RowBox[{
+                    RowBox[{"#2", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "#1"}], "]"}], "&"}],
+                    " ", ",", "#2"}], "]"}]}], "}"}], "]"}]}], "]"}], "&"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"imAll", ",", "displayMatches"}], "}"}]}], "]"}], "]"}]}],
+        ";"}], ",", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"startup", "\[Equal]", "True"}], ",", 
+        RowBox[{
+         RowBox[{"dispFile", "=", "\"\<\>\""}], ";"}], ",", 
+        RowBox[{"dispFile", "=", 
+         RowBox[{"\"\<The number of points in \>\"", "<>", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"waterNameA", "[", 
+            RowBox[{"[", "thisImgA", "]"}], "]"}], "]"}], "<>", 
+          "\"\< must equal the number of points in \>\"", "<>", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"waterNameB", "[", 
+            RowBox[{"[", "thisImgB", "]"}], "]"}], "]"}]}]}]}], "]"}]}], 
+     "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"make", "\[Equal]", "True"}], ",", 
+      RowBox[{
+       RowBox[{"mostRecent", "=", "\"\<making\>\""}], ";"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Which", "[", 
+     RowBox[{
+      RowBox[{"mostRecent", "\[Equal]", "\"\<newFile\>\""}], ",", "dispFile", 
+      ",", 
+      RowBox[{"mostRecent", "\[Equal]", "\"\<make\>\""}], ",", "dispMake", 
+      ",", 
+      RowBox[{"mostRecent", "\[Equal]", "\"\<making\>\""}], ",", 
+      "\"\<Now making animation...\>\"", ",", 
+      RowBox[{"mostRecent", "==", "\"\<starting\>\""}], ",", 
+      "\"\<Please select directories where the watermarks are located. The \
+menu selector will appear twice, once for directory A and once for directory \
+B.\>\""}], "]"}]}], ",", "\n", 
+   RowBox[{"Row", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Column", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"newDirA", ",", "False", ",", "\"\<\>\""}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"Button", "[", 
+              RowBox[{
+               RowBox[{"Text", "[", 
+                RowBox[{"\"\<Select Directory A\>\"", ",", 
+                 RowBox[{"Background", "\[Rule]", "colorBack"}]}], "]"}], ",", 
+               RowBox[{"newDirA", "=", "True"}]}], "]"}], "&"}]}], "}"}], 
+          "]"}], ",", 
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"newDirB", ",", "False", ",", "\"\<\>\""}], "}"}], ",", 
+            RowBox[{
+             RowBox[{"Button", "[", 
+              RowBox[{
+               RowBox[{"Text", "[", 
+                RowBox[{"\"\<Select Directory B\>\"", ",", 
+                 RowBox[{"Background", "\[Rule]", "colorBack"}]}], "]"}], ",", 
+               RowBox[{"newDirB", "=", "True"}]}], "]"}], "&"}]}], "}"}], 
+          "]"}]}], "}"}], "]"}], ",", 
+      RowBox[{"Column", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"thisImgA", ",", "1", ",", "\"\<\>\""}], "}"}], ",", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"Thread", "[", 
+              RowBox[{
+               RowBox[{"Range", "[", 
+                RowBox[{"Length", "@", "imageNamesA"}], "]"}], "\[Rule]", 
+               "imageNamesDispA"}], "]"}], "]"}], ",", 
+            RowBox[{"ControlType", "\[Rule]", "PopupMenu"}], ",", 
+            RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}], 
+         ",", 
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"thisImgB", ",", "1", ",", "\"\<\>\""}], "}"}], ",", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"Thread", "[", 
+              RowBox[{
+               RowBox[{"Range", "[", 
+                RowBox[{"Length", "@", "imageNamesB"}], "]"}], "\[Rule]", 
+               "imageNamesDispB"}], "]"}], "]"}], ",", 
+            RowBox[{"ControlType", "\[Rule]", "PopupMenu"}], ",", 
+            RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a2b", ",", "1", ",", "\"\<\>\""}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"1", "\[Rule]", 
+            RowBox[{"DownArrow", "[", 
+             RowBox[{"\"\<\>\"", ",", "\"\<\>\""}], "]"}]}], ",", 
+           RowBox[{"0", "\[Rule]", 
+            RowBox[{"UpArrow", "[", 
+             RowBox[{"\"\<\>\"", ",", "\"\<\>\""}], "]"}]}]}], "}"}], ",", 
+         RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}], ",", 
+      
+      RowBox[{"Spacer", "[", "10", "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Column", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"invertA", ",", "False", ",", "\"\<Invert A\>\""}], 
+             "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"False", ",", " ", "True"}], "}"}], ",", 
+            RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}], 
+         ",", 
+         RowBox[{"Control", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"invertB", ",", "False", ",", "\"\<Invert B\>\""}], 
+             "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"False", ",", " ", "True"}], "}"}], ",", 
+            RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"dots", ",", "1", ",", "\"\<\>\""}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"1", "\[Rule]", "\"\<show dots\>\""}], ",", 
+           RowBox[{"0", "\[Rule]", "\"\<hide dots\>\""}]}], "}"}], ",", 
+         RowBox[{"Background", "\[Rule]", "colorBack"}]}], "}"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Control", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"make", ",", "False", ",", "\"\<\>\""}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"Button", "[", 
+           RowBox[{
+            RowBox[{"Text", "[", 
+             RowBox[{"\"\<Make\\nOverlay\>\"", ",", 
+              RowBox[{"Background", "\[Rule]", "colorBack"}]}], "]"}], ",", 
+            RowBox[{"make", "=", "True"}]}], "]"}], "&"}]}], "}"}], "]"}]}], 
+     "}"}], "]"}], ",", 
+   RowBox[{"SynchronousUpdating", "\[Rule]", "False"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Initialization", "\[RuleDelayed]", 
+    RowBox[{"(", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"startup", "=", "True"}], ";", 
+      RowBox[{"thisImgAOld", "=", "1"}], ";", 
+      RowBox[{"thisImgBOld", "=", "1"}], ";", 
+      RowBox[{"snapCount", "=", "1"}], ";", 
+      RowBox[{"dirA", "=", 
+       RowBox[{"dirB", "=", 
+        RowBox[{"NotebookDirectory", "[", "]"}]}]}], ";", 
+      RowBox[{"mostRecent", "=", "\"\<starting\>\""}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dispFile", "=", "\"\<\>\""}], ";", 
+      RowBox[{"thisDirA", "=", 
+       RowBox[{"thisDirB", "=", 
+        RowBox[{"NotebookDirectory", "[", "]"}]}]}], ";", 
+      RowBox[{"imageNamesA", "=", 
+       RowBox[{"imageNamesB", "=", "\"\<\>\""}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"colorBack", "=", 
+       RowBox[{"Lighter", "[", "Green", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"making", "[", 
+        RowBox[{
+        "iA_", ",", "iB_", ",", "selA_", ",", "selB_", ",", "nameA_", ",", 
+         "nameB_", ",", "d_"}], "]"}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", "}"}], ",", 
+         RowBox[{
+          RowBox[{"dispMake", "=", "\"\<Working on animation...\>\""}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"coordBBA", "=", 
+           RowBox[{"CoordinateBoundingBox", "[", "selA", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"coordBBB", "=", 
+           RowBox[{"CoordinateBoundingBox", "[", "selB", "]"}]}], ";", 
+          RowBox[{"expLow", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Min", "[", 
+              RowBox[{
+               RowBox[{"coordBBA", "[", 
+                RowBox[{"[", 
+                 RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", 
+               RowBox[{"coordBBB", "[", 
+                RowBox[{"[", 
+                 RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "]"}], ",", 
+             RowBox[{"Min", "[", 
+              RowBox[{
+               RowBox[{"coordBBA", "[", 
+                RowBox[{"[", 
+                 RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+               RowBox[{"coordBBB", "[", 
+                RowBox[{"[", 
+                 RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "]"}]}], "}"}]}], 
+          ";", 
+          RowBox[{"coordBBAhigh", "=", 
+           RowBox[{
+            RowBox[{"ImageDimensions", "[", "iA", "]"}], "-", 
+            RowBox[{"coordBBA", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"coordBBBhigh", "=", 
+           RowBox[{
+            RowBox[{"ImageDimensions", "[", "iB", "]"}], "-", 
+            RowBox[{"coordBBB", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"expHigh", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Min", "[", 
+              RowBox[{
+               RowBox[{"coordBBAhigh", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], ",", 
+               RowBox[{"coordBBBhigh", "[", 
+                RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", 
+             RowBox[{"Min", "[", 
+              RowBox[{
+               RowBox[{"coordBBAhigh", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], ",", 
+               RowBox[{"coordBBBhigh", "[", 
+                RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "}"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"dataRangeA", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Min", "/@", 
+               RowBox[{"Transpose", "[", "selA", "]"}]}], "-", "expLow", "+", 
+              "1"}], ",", 
+             RowBox[{
+              RowBox[{"Max", "/@", 
+               RowBox[{"Transpose", "[", "selA", "]"}]}], "+", "expHigh", "-",
+               "1"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"dataRangeB", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Min", "/@", 
+               RowBox[{"Transpose", "[", "selB", "]"}]}], "-", "expLow", "+", 
+              "1"}], ",", 
+             RowBox[{
+              RowBox[{"Max", "/@", 
+               RowBox[{"Transpose", "[", "selB", "]"}]}], "+", "expHigh", "-",
+               "1"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"trimA", "=", 
+           RowBox[{"ImageTrim", "[", 
+            RowBox[{"iA", ",", "dataRangeA"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"trimB", "=", 
+           RowBox[{"ImageTrim", "[", 
+            RowBox[{"iB", ",", "dataRangeB"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"selectedTrimA", "=", 
+           RowBox[{"selA", "-", 
+            RowBox[{"ConstantArray", "[", 
+             RowBox[{
+              RowBox[{"dataRangeA", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"Length", "[", "selA", "]"}]}], "]"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"selectedTrimB", "=", 
+           RowBox[{"selB", "-", 
+            RowBox[{"ConstantArray", "[", 
+             RowBox[{
+              RowBox[{"dataRangeB", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"Length", "[", "selB", "]"}]}], "]"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"err", ",", "trans"}], "}"}], "=", 
+           RowBox[{"FindGeometricTransform", "[", 
+            RowBox[{"selectedTrimB", ",", "selectedTrimA", ",", 
+             RowBox[{"Method", "\[Rule]", "\"\<Linear\>\""}], ",", 
+             RowBox[{
+             "TransformationClass", "\[Rule]", "\"\<Similarity\>\""}]}], 
+            "]"}]}], ";", 
+          RowBox[{"imgTrans", "=", 
+           RowBox[{"ImageTransformation", "[", 
+            RowBox[{"trimB", ",", "trans", ",", 
+             RowBox[{"DataRange", "\[Rule]", "Full"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"highA", "=", 
+             RowBox[{"Image", "[", 
+              RowBox[{"HighlightImage", "[", 
+               RowBox[{"trimA", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Opacity", "[", "d", "]"}], ",", "Red", ",", 
+                  "selectedTrimA"}], "}"}]}], "]"}], "]"}]}], ",", 
+            RowBox[{"highTrans", "=", 
+             RowBox[{"Image", "[", 
+              RowBox[{"HighlightImage", "[", 
+               RowBox[{"imgTrans", ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Opacity", "[", "d", "]"}], ",", "Red", ",", 
+                  RowBox[{
+                   RowBox[{"InverseFunction", "[", "trans", "]"}], "/@", 
+                   "selectedTrimB"}]}], "}"}]}], "]"}], "]"}]}]}], "}"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"imgDim", "=", 
+           RowBox[{"ImageDimensions", "@", "trimA"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"imgCtr1", "=", 
+           RowBox[{"Round", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"imgDim", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "/", "2"}], ",", "60"}], 
+             "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"imgCtr2", "=", 
+           RowBox[{"Round", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"imgDim", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "/", "2"}], ",", 
+              RowBox[{
+               RowBox[{"imgDim", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "-", "100"}]}], "}"}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"fontScale", "=", 
+           RowBox[{
+            RowBox[{"Max", "[", 
+             RowBox[{
+              RowBox[{"ImageDimensions", "[", "highA", "]"}], ",", 
+              RowBox[{"ImageDimensions", "[", "highTrans", "]"}]}], "]"}], 
+            "/", "1200.0"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"step", "=", "0.03"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"range", "=", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Range", "[", 
+               RowBox[{"0", ",", "1", ",", "step"}], "]"}], ",", 
+              RowBox[{"Range", "[", 
+               RowBox[{"1", ",", "0", ",", 
+                RowBox[{"-", "step"}]}], "]"}]}], "}"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"dispExample", "=", 
+           RowBox[{"Show", "[", 
+            RowBox[{
+             RowBox[{"SetAlphaChannel", "[", 
+              RowBox[{"highA", ",", 
+               RowBox[{"1", "/", "2"}]}], "]"}], ",", 
+             RowBox[{"Graphics", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", 
+                 RowBox[{"1", "/", "2"}], "]"}], ",", 
+                RowBox[{"Text", "[", 
+                 RowBox[{
+                  RowBox[{"Style", "[", 
+                   RowBox[{"nameA", ",", "Gray"}], "]"}], ",", "imgCtr1"}], 
+                 "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"SetAlphaChannel", "[", 
+              RowBox[{"highTrans", ",", 
+               RowBox[{"1", "/", "2"}]}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Graphics", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Opacity", "[", 
+                 RowBox[{"1", "/", "2"}], "]"}], ",", 
+                RowBox[{"Text", "[", 
+                 RowBox[{
+                  RowBox[{"Style", "[", 
+                   RowBox[{"nameB", ",", "Gray"}], "]"}], ",", "imgCtr2"}], 
+                 "]"}]}], "}"}], "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"ImageSize", "\[Rule]", "800"}], ",", 
+             RowBox[{"Background", "\[Rule]", "Gray"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Mean", "[", 
+              RowBox[{"Mean", "[", 
+               RowBox[{"Mean", "[", 
+                RowBox[{"ImageData", "[", "dispExample", "]"}], "]"}], "]"}], 
+              "]"}], "<=", "0.5"}], ",", 
+            RowBox[{
+             RowBox[{"textColor", "=", "White"}], ";", 
+             RowBox[{"backColor", "=", "Black"}], ";"}], ",", 
+            RowBox[{
+             RowBox[{"textColor", "=", "Black"}], ";", 
+             RowBox[{"backColor", "=", "White"}], ";"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"fontScale", "=", 
+           RowBox[{"14", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"ImageDimensions", "[", "dispExample", "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "/", "1200.0"}]}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"frames", "=", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Show", "[", 
+              RowBox[{
+               RowBox[{"SetAlphaChannel", "[", 
+                RowBox[{"highA", ",", "s"}], "]"}], ",", 
+               RowBox[{"Graphics", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Opacity", "[", "s", "]"}], ",", 
+                  RowBox[{"Text", "[", 
+                   RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"nameA", ",", "textColor", ",", 
+                    RowBox[{"FontSize", "\[Rule]", "fontScale"}]}], "]"}], 
+                    ",", "imgCtr1"}], "]"}]}], "}"}], "]"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"SetAlphaChannel", "[", 
+                RowBox[{"highTrans", ",", 
+                 RowBox[{"1", "-", "s"}]}], "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Graphics", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Opacity", "[", 
+                   RowBox[{"1", "-", "s"}], "]"}], ",", 
+                  RowBox[{"Text", "[", 
+                   RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"nameB", ",", "textColor", ",", 
+                    RowBox[{"FontSize", "\[Rule]", "fontScale"}]}], "]"}], 
+                    ",", "imgCtr2"}], "]"}]}], "}"}], "]"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+               RowBox[{"Background", "\[Rule]", "backColor"}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"s", ",", "range"}], "}"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Which", "[", 
+           RowBox[{
+            RowBox[{"dots", "\[Equal]", "1"}], ",", 
+            RowBox[{"dotMess", "=", "\"\<s\>\""}], ",", 
+            RowBox[{"dots", "\[Equal]", "0"}], ",", 
+            RowBox[{"dotMess", "=", "\"\<h\>\""}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"outFile", "=", 
+           RowBox[{"FileNameJoin", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+              RowBox[{"StringJoin", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                "\"\<animation\>\"", ",", "nameA", ",", "\"\<-\>\"", ",", 
+                 "nameB", ",", "\"\<(\>\"", ",", "dotMess", ",", 
+                 "\"\<).gif\>\""}], "}"}], "]"}]}], "}"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"expMess", "=", 
+           RowBox[{"Export", "[", 
+            RowBox[{"outFile", ",", "frames", ",", 
+             RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", 
+              RowBox[{"1", "/", "5"}]}], ",", 
+             RowBox[{
+             "\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"dispMake", "=", 
+           RowBox[{"\"\<Overlay video saved to \>\"", "<>", "expMess"}]}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"mostRecent", "=", "\"\<make\>\""}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"make", "=", "False"}], ";"}]}], "]"}]}], ";"}], "\n", 
+     ")"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.813138397598419*^9, 3.8131383988356133`*^9}, {
+   3.813138983506938*^9, 3.81313900661518*^9}, {3.81313903767021*^9, 
+   3.8131390977959137`*^9}, {3.813139160108963*^9, 3.813139179622939*^9}, {
+   3.813139268136862*^9, 3.813139285559288*^9}, {3.813139424573289*^9, 
+   3.813139487391601*^9}, {3.8131396141766*^9, 3.8131396395618477`*^9}, {
+   3.813139692635762*^9, 3.813139712655114*^9}, {3.813140208982471*^9, 
+   3.8131402409084597`*^9}, {3.8131406571196537`*^9, 
+   3.8131407940408077`*^9}, {3.8131408703507433`*^9, 3.813140889868387*^9}, {
+   3.8131416193505793`*^9, 3.813141635630872*^9}, {3.813141670164752*^9, 
+   3.813141698820508*^9}, {3.8131417511820707`*^9, 3.813141780081917*^9}, {
+   3.81314200134205*^9, 3.813142012955768*^9}, {3.8131420966898327`*^9, 
+   3.8131421212199383`*^9}, {3.8131421771949577`*^9, 3.813142193035269*^9}, {
+   3.813142261532968*^9, 3.813142359690529*^9}, 3.813142397278347*^9, {
+   3.813142452371879*^9, 3.813142487088509*^9}, {3.813142773800603*^9, 
+   3.81314280761445*^9}, {3.813142890858972*^9, 3.813142912159637*^9}, {
+   3.81314301434559*^9, 3.813143035418776*^9}, {3.813143122602778*^9, 
+   3.813143148782873*^9}, {3.813143263118223*^9, 3.813143290806994*^9}, {
+   3.813143740058248*^9, 3.8131437879977217`*^9}, {3.813143954219817*^9, 
+   3.8131439546206427`*^9}, {3.813144097856223*^9, 3.813144128325536*^9}, {
+   3.8131442238421183`*^9, 3.81314424277892*^9}, {3.8131689565460176`*^9, 
+   3.813168966963126*^9}, {3.813169180783105*^9, 3.8131692897731752`*^9}, {
+   3.8131694037964153`*^9, 3.81316944682721*^9}, 3.8131694788458014`*^9, {
+   3.813169563420374*^9, 3.813169619902315*^9}, 3.813169827991827*^9, {
+   3.8131702741819696`*^9, 3.813170286302726*^9}, {3.8131703332516613`*^9, 
+   3.81317044317973*^9}, {3.813170969423456*^9, 3.813170979008974*^9}, {
+   3.8131710957413397`*^9, 3.8131710966265*^9}, {3.81317151897143*^9, 
+   3.8131715196752663`*^9}, {3.8131717273995237`*^9, 3.813171728405365*^9}, {
+   3.813171862311207*^9, 3.813171863093183*^9}, {3.813224904438324*^9, 
+   3.813224925617207*^9}, {3.813225128926359*^9, 3.813225168884079*^9}, {
+   3.813225199501772*^9, 3.813225207755108*^9}, {3.813225816813869*^9, 
+   3.813225817456686*^9}, 3.813249069509966*^9, {3.813249168461872*^9, 
+   3.813249170469433*^9}, {3.81324978147605*^9, 3.813249805298938*^9}, {
+   3.813258207427505*^9, 3.813258245055128*^9}, {3.813258362931088*^9, 
+   3.813258395910719*^9}, {3.8132584302025414`*^9, 3.81325846412076*^9}, {
+   3.813258513587097*^9, 3.813258514559099*^9}, {3.813258552527603*^9, 
+   3.8132585853104343`*^9}, {3.813258861575506*^9, 3.813258881683962*^9}, {
+   3.8133068434126463`*^9, 3.813306922732191*^9}, {3.81340119341572*^9, 
+   3.813401197302387*^9}, {3.8134012283691397`*^9, 3.813401267297002*^9}, {
+   3.8134014782134542`*^9, 3.8134015884525967`*^9}, {3.813402383810368*^9, 
+   3.8134024425924387`*^9}, {3.813402550213038*^9, 3.81340265375688*^9}, {
+   3.813402945953512*^9, 3.8134029464025383`*^9}, {3.8134075621368847`*^9, 
+   3.813407562658558*^9}, {3.813486956085195*^9, 3.813486956968557*^9}, {
+   3.813834086825835*^9, 3.813834093125249*^9}, {3.81384927437385*^9, 
+   3.813849315617278*^9}, {3.813849547422127*^9, 3.813849551423031*^9}, {
+   3.813849632982099*^9, 3.81384968311908*^9}, {3.813849890599375*^9, 
+   3.81384990496084*^9}, {3.813850093534546*^9, 3.8138500939507427`*^9}, {
+   3.8138504141430283`*^9, 3.81385041515014*^9}, {3.813850818667943*^9, 
+   3.8138508204613657`*^9}, {3.813851076689209*^9, 3.813851095729134*^9}, {
+   3.813851155807584*^9, 3.813851175242043*^9}, {3.813856563132065*^9, 
+   3.8138565643091516`*^9}, {3.8138572287185173`*^9, 3.813857232921858*^9}, {
+   3.813857706363331*^9, 3.813857716245139*^9}, {3.813858012517791*^9, 
+   3.813858024284292*^9}, {3.813858215427927*^9, 3.8138582214856358`*^9}, {
+   3.813858354839081*^9, 3.813858364094146*^9}, {3.813859077996641*^9, 
+   3.813859097839301*^9}, {3.813859224722331*^9, 3.813859225706256*^9}, {
+   3.814261920110478*^9, 3.814261957636655*^9}, {3.8142619879244947`*^9, 
+   3.814261999885015*^9}, {3.814262780789382*^9, 3.814262835220381*^9}, {
+   3.814262920767829*^9, 3.814262926301003*^9}, {3.814263191930908*^9, 
+   3.8142632985010653`*^9}, {3.814263417781049*^9, 3.814263418281515*^9}, {
+   3.8142642040922117`*^9, 3.8142642273428164`*^9}, {3.8142647842013893`*^9, 
+   3.814264784673794*^9}, {3.814308381051553*^9, 3.814308381874277*^9}, 
+   3.814308584516017*^9, {3.814308865097948*^9, 3.8143088651450167`*^9}, {
+   3.8144432094214363`*^9, 3.814443209507017*^9}, {3.814443310780101*^9, 
+   3.81444331133786*^9}, {3.814527024858922*^9, 3.8145270257477713`*^9}, {
+   3.814529892820334*^9, 3.814529909295888*^9}, {3.814530160197432*^9, 
+   3.8145301608174334`*^9}, {3.814530777311741*^9, 3.814530787181302*^9}, {
+   3.814536471305476*^9, 3.814536515418141*^9}, {3.814537126389394*^9, 
+   3.814537126626136*^9}, {3.8145400752971687`*^9, 3.814540111418901*^9}, {
+   3.814540293660384*^9, 3.814540299997993*^9}, {3.8145446412599373`*^9, 
+   3.814544641754813*^9}, {3.814548431345455*^9, 3.8145484530940247`*^9}, {
+   3.814803283014306*^9, 3.814803298971313*^9}, {3.81480647600904*^9, 
+   3.814806476636881*^9}, {3.814807958099708*^9, 3.814807960276108*^9}, {
+   3.81480799144221*^9, 3.814807992614778*^9}, {3.814808261167672*^9, 
+   3.814808262698523*^9}, {3.814809008986624*^9, 3.814809041396686*^9}, {
+   3.8148090885809717`*^9, 3.814809089214777*^9}, {3.814809518930698*^9, 
+   3.814809567952536*^9}, {3.814809993815241*^9, 3.814809996297462*^9}, {
+   3.814953712546372*^9, 3.814953717209778*^9}, {3.8149537748450336`*^9, 
+   3.814953806263592*^9}, {3.81495384884131*^9, 3.8149538838326607`*^9}, {
+   3.814953968246911*^9, 3.814954003045239*^9}, {3.814956668980096*^9, 
+   3.81495671815681*^9}, {3.8149568070707083`*^9, 3.8149568134313374`*^9}, {
+   3.814958107844322*^9, 3.814958118101221*^9}, {3.814958150899961*^9, 
+   3.8149582028922586`*^9}, {3.8149671601822147`*^9, 3.814967160924221*^9}, {
+   3.81497375714991*^9, 3.8149738519069567`*^9}, {3.814973890597999*^9, 
+   3.8149738930280457`*^9}, {3.8149741204962378`*^9, 3.814974125042491*^9}, {
+   3.81497862448531*^9, 3.814978810284672*^9}, {3.8149794514181023`*^9, 
+   3.8149794667298098`*^9}, {3.814979535829632*^9, 3.81497953635544*^9}, {
+   3.8149796627442207`*^9, 3.814979670930889*^9}, {3.814980573496788*^9, 
+   3.814980600824155*^9}, {3.814980780577855*^9, 3.8149808316172047`*^9}, {
+   3.8149809491346188`*^9, 3.8149809589384527`*^9}, {3.8149824998401957`*^9, 
+   3.814982500372374*^9}, {3.814982568876309*^9, 3.814982576436021*^9}, {
+   3.827232167136986*^9, 3.8272322153758173`*^9}, {3.8272322559730186`*^9, 
+   3.827232294527225*^9}, {3.82723232962501*^9, 3.8272323306437073`*^9}, {
+   3.827233199594729*^9, 3.8272332021395693`*^9}, 3.8272332549643383`*^9, {
+   3.827233565927971*^9, 3.8272335677049294`*^9}, {3.827233888991551*^9, 
+   3.8272338923685923`*^9}, {3.827235820121235*^9, 3.827235837598824*^9}, {
+   3.827235921846471*^9, 3.8272359255094557`*^9}, {3.827236052323205*^9, 
+   3.827236057160247*^9}, {3.827236168182753*^9, 3.82723619357234*^9}, {
+   3.827236233285254*^9, 3.827236256911808*^9}, {3.8272368299692593`*^9, 
+   3.8272368305446863`*^9}, {3.827237062748825*^9, 3.8272370630822067`*^9}, {
+   3.8272371394444447`*^9, 3.827237161451071*^9}, {3.827237200843519*^9, 
+   3.8272372106763906`*^9}, 3.82723727850686*^9, {3.827237311221838*^9, 
+   3.8272373415098677`*^9}, 3.827237445255775*^9, {3.82723778658641*^9, 
+   3.827237796169073*^9}, {3.827238270250444*^9, 3.827238270838566*^9}, {
+   3.827238330615747*^9, 3.8272383719815702`*^9}, {3.827238495114726*^9, 
+   3.827238524315174*^9}, {3.827239065838204*^9, 3.82723909737969*^9}, {
+   3.827239250868474*^9, 3.8272392605133533`*^9}, {3.827239482687599*^9, 
+   3.827239494878153*^9}, {3.827239538594105*^9, 3.827239542659308*^9}, {
+   3.827239593308897*^9, 3.827239604107205*^9}, {3.827239637529087*^9, 
+   3.827239644700859*^9}, {3.827240198688798*^9, 3.827240329842544*^9}, {
+   3.827240369679887*^9, 3.8272403785629387`*^9}, {3.8272406567403927`*^9, 
+   3.827240702199647*^9}, {3.827240771785905*^9, 3.827240816874282*^9}, {
+   3.8272409121417637`*^9, 3.82724094206367*^9}, {3.827241617480549*^9, 
+   3.827241618066515*^9}, {3.845198001333414*^9, 3.84519803251612*^9}, {
+   3.8451990693332233`*^9, 3.845199071287956*^9}, {3.845199965202154*^9, 
+   3.845200003917378*^9}, {3.845200179709907*^9, 3.845200180644837*^9}, {
+   3.845200779308114*^9, 3.845200804225062*^9}, {3.845201470177868*^9, 
+   3.845201512581688*^9}, {3.8452016155329742`*^9, 3.84520161697141*^9}, {
+   3.845201652266369*^9, 3.845201698033371*^9}, {3.8452307303192387`*^9, 
+   3.845230769538711*^9}, {3.845230844948608*^9, 3.8452308712725077`*^9}, {
+   3.8452309317765427`*^9, 3.845230970713619*^9}, {3.8452310069981823`*^9, 
+   3.845231025868917*^9}, {3.848771344145053*^9, 3.848771539232579*^9}, {
+   3.848771761241457*^9, 3.8487718104762707`*^9}, {3.848772265302712*^9, 
+   3.848772273227894*^9}, {3.848772377297882*^9, 3.848772377776498*^9}, {
+   3.848773071319178*^9, 3.848773084858317*^9}, {3.848773118235628*^9, 
+   3.848773224230865*^9}, 3.848773402804352*^9, {3.848773446927318*^9, 
+   3.8487734670437717`*^9}, {3.848773599924073*^9, 3.848773636873309*^9}, {
+   3.8487737310249434`*^9, 3.848773785294729*^9}, {3.8487740466431913`*^9, 
+   3.848774105946497*^9}, {3.848774238939682*^9, 3.848774360194559*^9}, {
+   3.848775704732802*^9, 3.84877570526236*^9}, {3.8489590803896523`*^9, 
+   3.848959194248664*^9}, {3.848959285482521*^9, 3.848959311307914*^9}, {
+   3.84895936098524*^9, 3.848959361157345*^9}, {3.8489594391556797`*^9, 
+   3.84895982505136*^9}, 3.848959952086121*^9, {3.848960439971982*^9, 
+   3.848960441392926*^9}, {3.8489605999323893`*^9, 3.848960611491084*^9}, {
+   3.84896065205507*^9, 3.848960655134584*^9}, {3.848960725386958*^9, 
+   3.848960731319026*^9}, {3.84896082339248*^9, 3.848960824381968*^9}, {
+   3.848961635797654*^9, 3.848961636437405*^9}, {3.851421764831615*^9, 
+   3.8514218870665817`*^9}, {3.851421926945705*^9, 3.851421988379642*^9}, {
+   3.851422239758443*^9, 3.851422345187718*^9}, {3.851422436802203*^9, 
+   3.851422445860235*^9}, 3.8514230124007883`*^9, {3.851504355625688*^9, 
+   3.8515043563040543`*^9}, {3.858607812505588*^9, 3.858607817445169*^9}, {
+   3.858607864467311*^9, 3.858608036706026*^9}, {3.885487871046968*^9, 
+   3.885487872079858*^9}, {3.885488397387849*^9, 3.885488398076733*^9}, {
+   3.885504719777792*^9, 3.885504720655016*^9}, {3.885504816332893*^9, 
+   3.885504816929059*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"8b149e8d-f2c4-4aea-83ee-1be0c159fbb6"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a2b$$ = 1, $CellContext`dots$$ = 
+    0, $CellContext`invertA$$ = False, $CellContext`invertB$$ = 
+    False, $CellContext`make$$ = False, $CellContext`newDirA$$ = 
+    False, $CellContext`newDirB$$ = False, $CellContext`thisImgA$$ = 
+    1, $CellContext`thisImgB$$ = 2, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`newDirA$$], False, ""}, 
+      Dynamic[Button[
+        Text[
+        "Select Directory A", 
+         Background -> $CellContext`colorBack], $CellContext`newDirA$$ = 
+        True]& ]}, {{
+       Hold[$CellContext`newDirB$$], False, ""}, 
+      Dynamic[Button[
+        Text[
+        "Select Directory B", 
+         Background -> $CellContext`colorBack], $CellContext`newDirB$$ = 
+        True]& ]}, {{
+       Hold[$CellContext`thisImgA$$], 1, ""}, 
+      Dynamic[
+       Thread[Range[
+          
+          Length[$CellContext`imageNamesA]] -> \
+$CellContext`imageNamesDispA]]}, {{
+       Hold[$CellContext`thisImgB$$], 1, ""}, 
+      Dynamic[
+       Thread[Range[
+          
+          Length[$CellContext`imageNamesB]] -> \
+$CellContext`imageNamesDispB]]}, {{
+       Hold[$CellContext`a2b$$], 1, ""}, {
+      1 -> DownArrow["", ""], 0 -> UpArrow["", ""]}}, {{
+       Hold[$CellContext`invertA$$], False, "Invert A"}, {False, True}}, {{
+       Hold[$CellContext`invertB$$], False, "Invert B"}, {False, True}}, {{
+       Hold[$CellContext`dots$$], 1, ""}, {
+      1 -> "show dots", 0 -> "hide dots"}}, {{
+       Hold[$CellContext`make$$], False, ""}, 
+      Dynamic[Button[
+        Text[
+        "Make\nOverlay", 
+         Background -> $CellContext`colorBack], $CellContext`make$$ = 
+        True]& ]}, {
+      Hold[
+       Row[{
+         Column[{
+           Manipulate`Place[1], 
+           Manipulate`Place[2]}], 
+         Column[{
+           Manipulate`Place[3], 
+           Manipulate`Place[4]}], 
+         Manipulate`Place[5], 
+         Spacer[10], 
+         Column[{
+           Manipulate`Place[6], 
+           Manipulate`Place[7]}], 
+         Manipulate`Place[8], 
+         Manipulate`Place[9]}]], Manipulate`Dump`ThisIsNotAControl}}, 
+    Typeset`size$$ = {1002., {3., 10.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     2, StandardForm, 
+      "Variables" :> {$CellContext`a2b$$ = 1, $CellContext`dots$$ = 
+        1, $CellContext`invertA$$ = False, $CellContext`invertB$$ = 
+        False, $CellContext`make$$ = False, $CellContext`newDirA$$ = 
+        False, $CellContext`newDirB$$ = False, $CellContext`thisImgA$$ = 
+        1, $CellContext`thisImgB$$ = 1}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (
+       If[$CellContext`newDirA$$ == 
+         True, $CellContext`thisChoice = SystemDialogInput["Directory", 
+            NotebookDirectory[], WindowTitle -> 
+            "Please locate a folder of watermark Points"]; 
+         If[$CellContext`thisChoice =!= $Canceled, $CellContext`thisDirA = \
+$CellContext`thisChoice; $CellContext`dirA = $CellContext`thisDirA; \
+$CellContext`txtFilesTest = FileNames["*.txt", $CellContext`dirA]; 
+           If[Length[$CellContext`txtFilesTest] > 
+             0, $CellContext`txts = 
+              Map[StringDrop[#, {-29, -24}]& , $CellContext`txtFilesTest]; \
+$CellContext`correspondingJPGs = 
+              Map[StringInsert[#, 
+                 "SnapWMImg", -24]& , $CellContext`txts]; \
+$CellContext`imageNamesCalc = Table[Part[
+                  Map[
+                  StringDrop[#, -4]& , $CellContext`correspondingJPGs], \
+$CellContext`i] <> ".jpg", {$CellContext`i, 
+                 
+                 Length[$CellContext`correspondingJPGs]}]; \
+$CellContext`imageNamesA = Table[
+                If[FileExistsQ[
+                   Part[$CellContext`imageNamesCalc, $CellContext`i]] == True, 
+                 Part[$CellContext`imageNamesCalc, $CellContext`i], 
+                 Nothing], {$CellContext`i, 
+                 
+                 Length[$CellContext`imageNamesCalc]}]; \
+$CellContext`txtFilesA = Table[
+                If[FileExistsQ[
+                   Part[$CellContext`imageNamesCalc, $CellContext`i]] == True, 
+                 Part[$CellContext`txtFilesTest, $CellContext`i], 
+                 Nothing], {$CellContext`i, 
+                 
+                 Length[$CellContext`imageNamesCalc]}]; \
+$CellContext`imageNamesDispA = 
+              Map[FileBaseName, $CellContext`imageNamesA]; \
+$CellContext`waterNameA = 
+              Map[StringDrop[#, -28]& , $CellContext`imageNamesDispA]; \
+$CellContext`thisImgAOld = 0; $CellContext`thisImgA$$ = 1; Null]; 
+           If[$CellContext`imageNamesB == "", $CellContext`newDirB$$ = True; 
+             Null]; $CellContext`newDirA$$ = False; $CellContext`startup = 
+            False; Null]; Null]; 
+       If[$CellContext`newDirB$$ == 
+         True, $CellContext`thisChoice = SystemDialogInput["Directory", 
+            NotebookDirectory[], WindowTitle -> 
+            "Please locate a folder of watermark Points"]; 
+         If[$CellContext`thisChoice =!= $Canceled, $CellContext`thisDirB = \
+$CellContext`thisChoice; $CellContext`dirB = $CellContext`thisDirB; \
+$CellContext`txtFilesTest = FileNames["*.txt", $CellContext`dirB]; 
+           If[Length[$CellContext`txtFilesTest] > 
+             0, $CellContext`txts = 
+              Map[StringDrop[#, {-29, -24}]& , $CellContext`txtFilesTest]; \
+$CellContext`correspondingJPGs = 
+              Map[StringInsert[#, 
+                 "SnapWMImg", -24]& , $CellContext`txts]; \
+$CellContext`imageNamesCalc = Table[Part[
+                  Map[
+                  StringDrop[#, -4]& , $CellContext`correspondingJPGs], \
+$CellContext`i] <> ".jpg", {$CellContext`i, 
+                 
+                 Length[$CellContext`correspondingJPGs]}]; \
+$CellContext`imageNamesB = Table[
+                If[FileExistsQ[
+                   Part[$CellContext`imageNamesCalc, $CellContext`i]] == True, 
+                 Part[$CellContext`imageNamesCalc, $CellContext`i], 
+                 Nothing], {$CellContext`i, 
+                 
+                 Length[$CellContext`imageNamesCalc]}]; \
+$CellContext`txtFilesB = Table[
+                If[FileExistsQ[
+                   Part[$CellContext`imageNamesCalc, $CellContext`i]] == True, 
+                 Part[$CellContext`txtFilesTest, $CellContext`i], 
+                 Nothing], {$CellContext`i, 
+                 
+                 Length[$CellContext`imageNamesCalc]}]; \
+$CellContext`imageNamesDispB = 
+              Map[FileBaseName, $CellContext`imageNamesB]; \
+$CellContext`waterNameB = 
+              Map[StringDrop[#, -28]& , $CellContext`imageNamesDispB]; \
+$CellContext`thisImgBOld = 0; $CellContext`thisImgB$$ = 1; Null]; 
+           If[$CellContext`imageNamesA == "", $CellContext`newDirA$$ = True; 
+             Null]; $CellContext`newDirB$$ = False; $CellContext`startup = 
+            False; Null]; Null]; 
+       If[$CellContext`thisImgA$$ != $CellContext`thisImgAOld, \
+$CellContext`textA = Import[
+            
+            Part[$CellContext`txtFilesA, $CellContext`thisImgA$$]]; \
+$CellContext`expAraw = ToExpression[
+            Part[
+             StringSplit[$CellContext`textA, "\n"], 1]]; $CellContext`imgAraw = 
+          ColorConvert[
+            Import[
+             Part[$CellContext`imageNamesA, $CellContext`thisImgA$$]], 
+            "Grayscale"]; $CellContext`inDim = Max[
+            ImageDimensions[$CellContext`imgAraw]]; 
+         If[Max[$CellContext`inDim] > 1000, $CellContext`rescaleF = 
+           1000./$CellContext`inDim, $CellContext`rescaleF = 1; 
+           Null]; $CellContext`imgA = ImageResize[$CellContext`imgAraw, 
+            
+            Scaled[$CellContext`rescaleF]]; $CellContext`imgAraw = \
+$CellContext`imgA; $CellContext`expA = $CellContext`rescaleF \
+$CellContext`expAraw; $CellContext`expAraw = $CellContext`expA; \
+$CellContext`mostRecent = 
+          "newFile"; $CellContext`thisImgAOld = $CellContext`thisImgA$$]; 
+       If[$CellContext`thisImgB$$ != $CellContext`thisImgBOld, \
+$CellContext`textB = Import[
+            
+            Part[$CellContext`txtFilesB, $CellContext`thisImgB$$]]; \
+$CellContext`expBraw = ToExpression[
+            Part[
+             StringSplit[$CellContext`textB, "\n"], 1]]; $CellContext`imgBraw = 
+          ColorConvert[
+            Import[
+             Part[$CellContext`imageNamesB, $CellContext`thisImgB$$]], 
+            "Grayscale"]; $CellContext`inDim = Max[
+            ImageDimensions[$CellContext`imgBraw]]; 
+         If[Max[$CellContext`inDim] > 1000, $CellContext`rescaleF = 
+           1000./$CellContext`inDim, $CellContext`rescaleF = 1; 
+           Null]; $CellContext`imgB = ImageResize[$CellContext`imgBraw, 
+            
+            Scaled[$CellContext`rescaleF]]; $CellContext`imgBraw = \
+$CellContext`imgB; $CellContext`expB = $CellContext`rescaleF \
+$CellContext`expBraw; $CellContext`expBraw = $CellContext`expB; \
+$CellContext`mostRecent = 
+          "newFile"; $CellContext`thisImgBOld = $CellContext`thisImgB$$]; 
+       If[$CellContext`mostRecent == 
+         "making", $CellContext`imgAMod = If[$CellContext`invertA$$ == True, 
+            
+            ColorNegate[$CellContext`imgA], $CellContext`imgA]; \
+$CellContext`imgBMod = If[$CellContext`invertB$$ == True, 
+            ColorNegate[$CellContext`imgB], $CellContext`imgB]; 
+         If[$CellContext`a2b$$ == 1, 
+           $CellContext`making[$CellContext`imgAMod, $CellContext`imgBMod, \
+$CellContext`selectedA, $CellContext`selectedB, 
+            Part[$CellContext`waterNameA, $CellContext`thisImgA$$], 
+            
+            Part[$CellContext`waterNameB, $CellContext`thisImgB$$], \
+$CellContext`dots$$]]; If[$CellContext`a2b$$ == 0, 
+           $CellContext`making[$CellContext`imgBMod, $CellContext`imgAMod, \
+$CellContext`selectedB, $CellContext`selectedA, 
+            Part[$CellContext`waterNameB, $CellContext`thisImgB$$], 
+            
+            Part[$CellContext`waterNameA, $CellContext`thisImgA$$], \
+$CellContext`dots$$]]; Null]; If[
+         And[
+         Length[$CellContext`expA] == Length[$CellContext`expB], 
+          Length[$CellContext`expA] > 0], $CellContext`ind = Flatten[
+            Position[
+            Map[Total, $CellContext`expA] Map[Total, $CellContext`expB], 
+             PatternTest[
+              Blank[], 0.01 < #& ]]]; $CellContext`selectedA = 
+          Part[$CellContext`expA, $CellContext`ind]; $CellContext`selectedB = 
+          Part[$CellContext`expB, $CellContext`ind]; $CellContext`imgAMod = 
+          If[$CellContext`invertA$$ == True, 
+            
+            ColorNegate[$CellContext`imgA], $CellContext`imgA]; \
+$CellContext`imgBMod = If[$CellContext`invertB$$ == True, 
+            
+            ColorNegate[$CellContext`imgB], $CellContext`imgB]; \
+$CellContext`images = {$CellContext`imgAMod, $CellContext`imgBMod}; \
+$CellContext`matches = {$CellContext`selectedA, $CellContext`selectedB}; \
+$CellContext`displayMatches = {$CellContext`expA, $CellContext`expB}; \
+$CellContext`imAll = Map[Image, 
+            Map[ImageData, $CellContext`images]]; $CellContext`dispFile = 
+          GraphicsRow[
+            MapThread[Show[#, 
+              Graphics[{Yellow, 
+                MapIndexed[Inset[
+                  
+                  Part[#2, 
+                   1], #]& , #2]}]]& , {$CellContext`imAll, \
+$CellContext`displayMatches}]]; Null, 
+         If[$CellContext`startup == True, $CellContext`dispFile = ""; 
+          Null, $CellContext`dispFile = (("The number of points in " <> 
+             ToString[
+               Part[$CellContext`waterNameA, $CellContext`thisImgA$$]]) <> 
+            " must equal the number of points in ") <> ToString[
+             Part[$CellContext`waterNameB, $CellContext`thisImgB$$]]]]; 
+       If[$CellContext`make$$ == True, $CellContext`mostRecent = "making"; 
+         Null]; Which[$CellContext`mostRecent == 
+         "newFile", $CellContext`dispFile, $CellContext`mostRecent == 
+         "make", $CellContext`dispMake, $CellContext`mostRecent == "making", 
+         "Now making animation...", $CellContext`mostRecent == "starting", 
+         "Please select directories where the watermarks are located. The \
+menu selector will appear twice, once for directory A and once for directory \
+B."]), "Specifications" :> {{{$CellContext`newDirA$$, False, ""}, 
+         Dynamic[Button[
+           Text[
+           "Select Directory A", 
+            Background -> $CellContext`colorBack], $CellContext`newDirA$$ = 
+           True]& ], ControlPlacement -> 
+         1}, {{$CellContext`newDirB$$, False, ""}, 
+         Dynamic[Button[
+           Text[
+           "Select Directory B", 
+            Background -> $CellContext`colorBack], $CellContext`newDirB$$ = 
+           True]& ], ControlPlacement -> 
+         2}, {{$CellContext`thisImgA$$, 1, ""}, 
+         Dynamic[
+          Thread[Range[
+             
+             Length[$CellContext`imageNamesA]] -> \
+$CellContext`imageNamesDispA]], ControlType -> PopupMenu, Background -> 
+         RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         3}, {{$CellContext`thisImgB$$, 1, ""}, 
+         Dynamic[
+          Thread[Range[
+             
+             Length[$CellContext`imageNamesB]] -> \
+$CellContext`imageNamesDispB]], ControlType -> PopupMenu, Background -> 
+         RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         4}, {{$CellContext`a2b$$, 1, ""}, {
+         1 -> DownArrow["", ""], 0 -> UpArrow["", ""]}, Background -> RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         5}, {{$CellContext`invertA$$, False, "Invert A"}, {False, True}, 
+         Background -> RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         6}, {{$CellContext`invertB$$, False, "Invert B"}, {False, True}, 
+         Background -> RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         7}, {{$CellContext`dots$$, 1, ""}, {
+         1 -> "show dots", 0 -> "hide dots"}, Background -> RGBColor[
+           Rational[1, 3], 1, 
+           Rational[1, 3]], ControlPlacement -> 
+         8}, {{$CellContext`make$$, False, ""}, 
+         Dynamic[Button[
+           Text[
+           "Make\nOverlay", 
+            Background -> $CellContext`colorBack], $CellContext`make$$ = 
+           True]& ], ControlPlacement -> 9}, 
+        Row[{
+          Column[{
+            Manipulate`Place[1], 
+            Manipulate`Place[2]}], 
+          Column[{
+            Manipulate`Place[3], 
+            Manipulate`Place[4]}], 
+          Manipulate`Place[5], 
+          Spacer[10], 
+          Column[{
+            Manipulate`Place[6], 
+            Manipulate`Place[7]}], 
+          Manipulate`Place[8], 
+          Manipulate`Place[9]}]}, "Options" :> {SynchronousUpdating -> False},
+       "DefaultOptions" :> {}],
+     ImageSizeCache->{1046., {71., 76.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`thisDirA = 
+       "/Users/sethares/BillsMathematica/watermarks/overlayAnimation/", \
+$CellContext`dirA = 
+       "/Users/sethares/BillsMathematica/watermarks/overlayAnimation/", \
+$CellContext`imageNamesA = "", $CellContext`thisImgAOld = 
+       1, $CellContext`imageNamesB = "", $CellContext`startup = 
+       True, $CellContext`thisDirB = 
+       "/Users/sethares/BillsMathematica/watermarks/overlayAnimation/", \
+$CellContext`dirB = 
+       "/Users/sethares/BillsMathematica/watermarks/overlayAnimation/", \
+$CellContext`thisImgBOld = 1, $CellContext`mostRecent = 
+       "starting", $CellContext`making[
+         Pattern[$CellContext`iA$, 
+          Blank[]], 
+         Pattern[$CellContext`iB$, 
+          Blank[]], 
+         Pattern[$CellContext`selA$, 
+          Blank[]], 
+         Pattern[$CellContext`selB$, 
+          Blank[]], 
+         Pattern[$CellContext`nameA$, 
+          Blank[]], 
+         Pattern[$CellContext`nameB$, 
+          Blank[]], 
+         Pattern[$CellContext`d$, 
+          Blank[]]] := 
+       Module[{}, $CellContext`dispMake = 
+          "Working on animation..."; $CellContext`coordBBA = 
+          CoordinateBoundingBox[$CellContext`selA$]; $CellContext`coordBBB = 
+          CoordinateBoundingBox[$CellContext`selB$]; $CellContext`expLow = {
+            Min[
+             Part[$CellContext`coordBBA, 1, 1], 
+             Part[$CellContext`coordBBB, 1, 1]], 
+            Min[
+             Part[$CellContext`coordBBA, 1, 2], 
+             Part[$CellContext`coordBBB, 1, 2]]}; $CellContext`coordBBAhigh = 
+          ImageDimensions[$CellContext`iA$] - 
+           Part[$CellContext`coordBBA, 2]; $CellContext`coordBBBhigh = 
+          ImageDimensions[$CellContext`iB$] - 
+           Part[$CellContext`coordBBB, 2]; $CellContext`expHigh = {
+            Min[
+             Part[$CellContext`coordBBAhigh, 1], 
+             Part[$CellContext`coordBBBhigh, 1]], 
+            Min[
+             Part[$CellContext`coordBBAhigh, 2], 
+             Part[$CellContext`coordBBBhigh, 2]]}; $CellContext`dataRangeA = {
+           Map[Min, 
+              Transpose[$CellContext`selA$]] - $CellContext`expLow + 1, 
+            Map[Max, 
+              Transpose[$CellContext`selA$]] + $CellContext`expHigh - 
+            1}; $CellContext`dataRangeB = {Map[Min, 
+              Transpose[$CellContext`selB$]] - $CellContext`expLow + 1, 
+            Map[Max, 
+              Transpose[$CellContext`selB$]] + $CellContext`expHigh - 
+            1}; $CellContext`trimA = 
+          ImageTrim[$CellContext`iA$, $CellContext`dataRangeA]; \
+$CellContext`trimB = 
+          ImageTrim[$CellContext`iB$, $CellContext`dataRangeB]; \
+$CellContext`selectedTrimA = $CellContext`selA$ - ConstantArray[
+            Part[$CellContext`dataRangeA, 1], 
+            
+            Length[$CellContext`selA$]]; $CellContext`selectedTrimB = \
+$CellContext`selB$ - ConstantArray[
+            Part[$CellContext`dataRangeB, 1], 
+            
+            Length[$CellContext`selB$]]; {$CellContext`err, \
+$CellContext`trans} = 
+          FindGeometricTransform[$CellContext`selectedTrimB, \
+$CellContext`selectedTrimA, Method -> "Linear", TransformationClass -> 
+            "Similarity"]; $CellContext`imgTrans = 
+          ImageTransformation[$CellContext`trimB, $CellContext`trans, 
+            DataRange -> Full]; {$CellContext`highA = Image[
+             HighlightImage[$CellContext`trimA, {
+               Opacity[$CellContext`d$], 
+               Red, $CellContext`selectedTrimA}]], $CellContext`highTrans = 
+           Image[
+             HighlightImage[$CellContext`imgTrans, {
+               Opacity[$CellContext`d$], Red, 
+               Map[
+                
+                InverseFunction[$CellContext`trans], \
+$CellContext`selectedTrimB]}]]}; $CellContext`imgDim = 
+          ImageDimensions[$CellContext`trimA]; $CellContext`imgCtr1 = 
+          Round[{Part[$CellContext`imgDim, 1]/2, 60}]; $CellContext`imgCtr2 = 
+          Round[{Part[$CellContext`imgDim, 1]/2, Part[$CellContext`imgDim, 2] - 
+             100}]; $CellContext`fontScale = Max[
+             ImageDimensions[$CellContext`highA], 
+             ImageDimensions[$CellContext`highTrans]]/
+           1200.; $CellContext`step = 0.03; $CellContext`range = Flatten[{
+             Range[0, 1, $CellContext`step], 
+             Range[1, 0, -$CellContext`step]}]; $CellContext`dispExample = 
+          Show[
+            SetAlphaChannel[$CellContext`highA, 1/2], 
+            Graphics[{
+              Opacity[1/2], 
+              Text[
+               Style[$CellContext`nameA$, Gray], $CellContext`imgCtr1]}], 
+            SetAlphaChannel[$CellContext`highTrans, 1/2], 
+            Graphics[{
+              Opacity[1/2], 
+              Text[
+               Style[$CellContext`nameB$, Gray], $CellContext`imgCtr2]}], 
+            ImageSize -> 800, Background -> Gray]; If[Mean[
+             Mean[
+              Mean[
+               ImageData[$CellContext`dispExample]]]] <= 
+           0.5, $CellContext`textColor = White; $CellContext`backColor = 
+            Black; Null, $CellContext`textColor = 
+            Black; $CellContext`backColor = White; 
+           Null]; $CellContext`fontScale = 14 (Part[
+              ImageDimensions[$CellContext`dispExample], 2]/
+            1200.); $CellContext`frames = Table[
+            Show[
+             SetAlphaChannel[$CellContext`highA, $CellContext`s], 
+             Graphics[{
+               Opacity[$CellContext`s], 
+               Text[
+                
+                Style[$CellContext`nameA$, $CellContext`textColor, 
+                 FontSize -> $CellContext`fontScale], $CellContext`imgCtr1]}], 
+             SetAlphaChannel[$CellContext`highTrans, 1 - $CellContext`s], 
+             Graphics[{
+               Opacity[1 - $CellContext`s], 
+               Text[
+                
+                Style[$CellContext`nameB$, $CellContext`textColor, 
+                 FontSize -> $CellContext`fontScale], $CellContext`imgCtr2]}],
+              ImageSize -> 400, 
+             Background -> $CellContext`backColor], {$CellContext`s, \
+$CellContext`range}]; 
+         Which[FE`dots$$96 == 1, $CellContext`dotMess = "s", FE`dots$$96 == 
+           0, $CellContext`dotMess = "h"]; $CellContext`outFile = 
+          FileNameJoin[{
+             NotebookDirectory[], 
+             
+             StringJoin[{
+              "animation", $CellContext`nameA$, "-", $CellContext`nameB$, 
+               "(", $CellContext`dotMess, ").gif"}]}]; $CellContext`expMess = 
+          Export[$CellContext`outFile, $CellContext`frames, 
+            "DisplayDurations" -> 1/5, "AnimationRepetitions" -> 
+            Infinity]; $CellContext`dispMake = 
+          "Overlay video saved to " <> $CellContext`expMess; \
+$CellContext`mostRecent = "make"; FE`make$$96 = False; Null], 
+       Attributes[$CellContext`iA$] = {Temporary}, 
+       Attributes[$CellContext`iB$] = {Temporary}, 
+       Attributes[$CellContext`selA$] = {Temporary}, 
+       Attributes[$CellContext`selB$] = {Temporary}, 
+       Attributes[$CellContext`nameA$] = {Temporary}, 
+       Attributes[$CellContext`nameB$] = {Temporary}, 
+       Attributes[$CellContext`d$] = {Temporary}, $CellContext`dispFile = 
+       "", $CellContext`colorBack = 
+       RGBColor[1/3, 1, 1/3], $CellContext`startup = 
+        True; $CellContext`thisImgAOld = 1; $CellContext`thisImgBOld = 
+        1; $CellContext`snapCount = 
+        1; $CellContext`dirA = ($CellContext`dirB = 
+         NotebookDirectory[]); $CellContext`mostRecent = 
+        "starting"; $CellContext`dispFile = 
+        ""; $CellContext`thisDirA = ($CellContext`thisDirB = 
+         NotebookDirectory[]); $CellContext`imageNamesA = \
+($CellContext`imageNamesB = ""); $CellContext`colorBack = 
+        Lighter[Green]; $CellContext`making[
+          Pattern[$CellContext`iA$, 
+           Blank[]], 
+          Pattern[$CellContext`iB$, 
+           Blank[]], 
+          Pattern[$CellContext`selA$, 
+           Blank[]], 
+          Pattern[$CellContext`selB$, 
+           Blank[]], 
+          Pattern[$CellContext`nameA$, 
+           Blank[]], 
+          Pattern[$CellContext`nameB$, 
+           Blank[]], 
+          Pattern[$CellContext`d$, 
+           Blank[]]] := 
+        Module[{}, $CellContext`dispMake = 
+           "Working on animation..."; $CellContext`coordBBA = 
+           CoordinateBoundingBox[$CellContext`selA$]; $CellContext`coordBBB = 
+           CoordinateBoundingBox[$CellContext`selB$]; $CellContext`expLow = {
+             Min[
+              Part[$CellContext`coordBBA, 1, 1], 
+              Part[$CellContext`coordBBB, 1, 1]], 
+             Min[
+              Part[$CellContext`coordBBA, 1, 2], 
+              Part[$CellContext`coordBBB, 1, 2]]}; $CellContext`coordBBAhigh = 
+           ImageDimensions[$CellContext`iA$] - 
+            Part[$CellContext`coordBBA, 2]; $CellContext`coordBBBhigh = 
+           ImageDimensions[$CellContext`iB$] - 
+            Part[$CellContext`coordBBB, 2]; $CellContext`expHigh = {
+             Min[
+              Part[$CellContext`coordBBAhigh, 1], 
+              Part[$CellContext`coordBBBhigh, 1]], 
+             Min[
+              Part[$CellContext`coordBBAhigh, 2], 
+              
+              Part[$CellContext`coordBBBhigh, 
+               2]]}; $CellContext`dataRangeA = {Map[Min, 
+               Transpose[$CellContext`selA$]] - $CellContext`expLow + 1, 
+             Map[Max, 
+               Transpose[$CellContext`selA$]] + $CellContext`expHigh - 
+             1}; $CellContext`dataRangeB = {Map[Min, 
+               Transpose[$CellContext`selB$]] - $CellContext`expLow + 1, 
+             Map[Max, 
+               Transpose[$CellContext`selB$]] + $CellContext`expHigh - 
+             1}; $CellContext`trimA = 
+           ImageTrim[$CellContext`iA$, $CellContext`dataRangeA]; \
+$CellContext`trimB = 
+           ImageTrim[$CellContext`iB$, $CellContext`dataRangeB]; \
+$CellContext`selectedTrimA = $CellContext`selA$ - ConstantArray[
+             Part[$CellContext`dataRangeA, 1], 
+             
+             Length[$CellContext`selA$]]; $CellContext`selectedTrimB = \
+$CellContext`selB$ - ConstantArray[
+             Part[$CellContext`dataRangeB, 1], 
+             
+             Length[$CellContext`selB$]]; {$CellContext`err, \
+$CellContext`trans} = 
+           FindGeometricTransform[$CellContext`selectedTrimB, \
+$CellContext`selectedTrimA, Method -> "Linear", TransformationClass -> 
+             "Similarity"]; $CellContext`imgTrans = 
+           ImageTransformation[$CellContext`trimB, $CellContext`trans, 
+             DataRange -> Full]; {$CellContext`highA = Image[
+              HighlightImage[$CellContext`trimA, {
+                Opacity[$CellContext`d$], 
+                Red, $CellContext`selectedTrimA}]], $CellContext`highTrans = 
+            Image[
+              HighlightImage[$CellContext`imgTrans, {
+                Opacity[$CellContext`d$], Red, 
+                Map[
+                 
+                 InverseFunction[$CellContext`trans], \
+$CellContext`selectedTrimB]}]]}; $CellContext`imgDim = 
+           ImageDimensions[$CellContext`trimA]; $CellContext`imgCtr1 = 
+           Round[{Part[$CellContext`imgDim, 1]/2, 60}]; $CellContext`imgCtr2 = 
+           Round[{Part[$CellContext`imgDim, 1]/2, 
+              Part[$CellContext`imgDim, 2] - 100}]; $CellContext`fontScale = 
+           Max[
+              ImageDimensions[$CellContext`highA], 
+              ImageDimensions[$CellContext`highTrans]]/
+            1200.; $CellContext`step = 0.03; $CellContext`range = Flatten[{
+              Range[0, 1, $CellContext`step], 
+              Range[1, 0, -$CellContext`step]}]; $CellContext`dispExample = 
+           Show[
+             SetAlphaChannel[$CellContext`highA, 1/2], 
+             Graphics[{
+               Opacity[1/2], 
+               Text[
+                Style[$CellContext`nameA$, Gray], $CellContext`imgCtr1]}], 
+             SetAlphaChannel[$CellContext`highTrans, 1/2], 
+             Graphics[{
+               Opacity[1/2], 
+               Text[
+                Style[$CellContext`nameB$, Gray], $CellContext`imgCtr2]}], 
+             ImageSize -> 800, Background -> Gray]; If[Mean[
+              Mean[
+               Mean[
+                ImageData[$CellContext`dispExample]]]] <= 
+            0.5, $CellContext`textColor = White; $CellContext`backColor = 
+             Black; Null, $CellContext`textColor = 
+             Black; $CellContext`backColor = White; 
+            Null]; $CellContext`fontScale = 14 (Part[
+               ImageDimensions[$CellContext`dispExample], 2]/
+             1200.); $CellContext`frames = Table[
+             Show[
+              SetAlphaChannel[$CellContext`highA, $CellContext`s], 
+              Graphics[{
+                Opacity[$CellContext`s], 
+                Text[
+                 
+                 Style[$CellContext`nameA$, $CellContext`textColor, 
+                  FontSize -> $CellContext`fontScale], \
+$CellContext`imgCtr1]}], 
+              SetAlphaChannel[$CellContext`highTrans, 1 - $CellContext`s], 
+              Graphics[{
+                Opacity[1 - $CellContext`s], 
+                Text[
+                 
+                 Style[$CellContext`nameB$, $CellContext`textColor, 
+                  FontSize -> $CellContext`fontScale], \
+$CellContext`imgCtr2]}], ImageSize -> 400, 
+              Background -> $CellContext`backColor], {$CellContext`s, \
+$CellContext`range}]; 
+          Which[$CellContext`dots$$ == 1, $CellContext`dotMess = 
+            "s", $CellContext`dots$$ == 0, $CellContext`dotMess = 
+            "h"]; $CellContext`outFile = FileNameJoin[{
+              NotebookDirectory[], 
+              
+              StringJoin[{
+               "animation", $CellContext`nameA$, "-", $CellContext`nameB$, 
+                "(", $CellContext`dotMess, ").gif"}]}]; $CellContext`expMess = 
+           Export[$CellContext`outFile, $CellContext`frames, 
+             "DisplayDurations" -> 1/5, "AnimationRepetitions" -> 
+             Infinity]; $CellContext`dispMake = 
+           "Overlay video saved to " <> $CellContext`expMess; \
+$CellContext`mostRecent = "make"; $CellContext`make$$ = False; Null]; Null}; 
+     Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.8854879621802177`*^9, 3.885504721388151*^9, {3.885504809755685*^9, 
+   3.885504817455337*^9}},
+ CellLabel->"Out[2]=",ExpressionUUID->"2babed98-2ee6-417d-84f2-7f7028125e90"]
+}, {2}]]
+}, Open  ]]
+},
+WindowSize->{1441, 960},
+WindowMargins->{{18, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Mac OS X ARM (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e70c6b65-c5ec-43ae-8bc6-d0923a5411c3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[1486, 35, 420, 6, 67, "Section",ExpressionUUID->"dc53fd55-0f5b-4946-b9cc-f5d37d9663aa"],
+Cell[CellGroupData[{
+Cell[1931, 45, 50557, 1097, 2824, "Input",ExpressionUUID->"8b149e8d-f2c4-4aea-83ee-1be0c159fbb6"],
+Cell[52491, 1144, 30127, 638, 166, "Output",ExpressionUUID->"2babed98-2ee6-417d-84f2-7f7028125e90"]
+}, {2}]]
+}, Open  ]]
+}
+]
+*)
+
